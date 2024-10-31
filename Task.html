@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Homework 5</title>
+    <style>
+        .everySecondButton {
+            background-color: blue;
+        }
+    </style>    
 </head>
 
 <body>
@@ -36,6 +41,58 @@
             <button>Кнопка 4</button>
         </li>
     </ul>
+    <script>
+
+        // Задание 1
+        document.addEventListener('DOMContentLoaded', () => console.log('все теги прогрузились'));
+
+        // Задание 2
+        document.addEventListener('load', () => console.log('страница загрузилась'));
+
+        // Задание 3
+        document.addEventListener('click', (e) => {
+            let divEl = document.querySelector('div');
+            if (divEl !== null) {
+                let superElementEl = divEl.querySelector('.super_element');
+                if (superElementEl) {
+                    console.log('Класс "super_element" присутствует в элементе "div"');
+                } else {
+                    console.log('Класс "super_element" отсутствует в элементе "div"');
+                }
+            } else {
+                console.log('Элемент "div" отсутствует в документе');
+            }
+            let target = e.target;
+            console.log(`Был нажат тег ${target.tagName.toLowerCase()}`);
+        });
+
+        // Задание 4
+        let textAreaEl = document.querySelector('textarea');
+        textAreaEl.addEventListener('mouseover', () => console.log('Вы навели на textarea.'));
+
+        // Задание 5
+        let ulEl = document.querySelector('ul');
+        ulEl.addEventListener('click', (e) => {
+            let target = e.target;
+            if (target.tagName === 'BUTTON') {
+                console.log(target.textContent);
+            }
+        });
+
+        // Задание 6
+        // При нажатии мыши сначало обрабатываются события тега ul, а потом тега document, т.к. document находиться дальше по дереву от источника события
+
+        // Задание 7
+        let liEls = document.querySelectorAll('li');
+        for (let index = 0; index < liEls.length; index++) {
+            const element = liEls[index];
+            if (index % 2 == 1) {
+                element.classList.add('everySecondButton');
+            }
+        }
+
+
+    </script>
 </body>
 
 </html>
